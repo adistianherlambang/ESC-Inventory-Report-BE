@@ -5,14 +5,16 @@ const reportSchema = mongoose.Schema({
   capacity: String,
   IMEI: String,
   price: {
-    amount: {type: String, required: true},
+    amount: {type: Number, required: true},
     paymentType: {type: String, enum: ["cs", "gs", "tf"], required: true}
-  }
+  },
+  createdAt: String
 })
 
 const pmtData = mongoose.Schema({
   name: String,
-  report: [reportSchema]
+  brand: String,
+  report: [reportSchema],
 })
 
 module.exports = mongoose.model("pmtData", pmtData)

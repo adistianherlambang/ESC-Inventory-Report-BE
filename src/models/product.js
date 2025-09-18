@@ -1,7 +1,7 @@
 const mongoose = require("../config/dbConfig")
 
 const allProduct = mongoose.Schema({
-  brand: String,
+  brand: { type: String, index: true},
   product: String,
   capacity: String,
   color: String,

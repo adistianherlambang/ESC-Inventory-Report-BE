@@ -7,6 +7,16 @@ async function getAllProduct() {
     throw new Error("gagal mengambil data: " + err.message)
   }
 }
+
+async function getProductByBrand(brand) {
+  try {
+    const data = await allProduct.find({brand})
+    return data
+  } catch(err) {
+    throw new Error("Gagal mengambil data: " + err.message)
+  }
+}
+
 async function createProduct(data) {
   try {
     const createProduct = new allProduct(data)
@@ -17,4 +27,16 @@ async function createProduct(data) {
   }
 }
 
-module.exports = { getAllProduct, createProduct }
+async function addImei(productId, imei) {
+  try {
+    const updated = await allProduct.findByIdAndUpdate(
+      productId,
+      { $push: { IMEI: imei } },
+      { new: true }  // return data terbaru setelah update
+    )
+    return updated
+  } catch (err) {
+    throw new Error("gagal menambahkan IMEI: " + err.message)
+  }
+}
+module.exports = { getAllProduct, createProduct, getProductByBrand, addImei }

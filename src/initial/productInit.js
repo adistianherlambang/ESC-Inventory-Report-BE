@@ -3,8 +3,8 @@ const { createProduct } = require("../services/productServices")
 async function run() {
   try {
     const produk = await createProduct({
-      brand: "samsung",
-      product: "samsung a16",
+      brand: "realme",
+      product: "realme c71",
       capacity: "8/128",
       IMEI: [
         "123",
