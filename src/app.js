@@ -6,6 +6,7 @@ const mongoose = require("./config/dbConfig")
 const authRouter = require("./routes/auth")
 const pmtData = require("./data/pmtData")
 const productData = require("./data/productData")
+const user = require("./data/user")
 
 dotenv.config()
 
@@ -24,6 +25,8 @@ app.use("/api/auth", authRouter)
 app.use("/pmt", pmtData)
 
 app.use("/product", productData)
+
+app.use("/user", user)
 
 app.listen(PORT, () => {
   console.log('jalan di port', PORT)

@@ -16,4 +16,12 @@ async function getUserByUnique(unique) {
   return await User.findOne({unique})
 }
 
-module.exports = { createUser, getUserByUnique }
+async function getUser() {
+  try {
+    return await User.find()
+  } catch(err) {
+    throw new Error("Gagal mengambil data" + err.message)
+  }
+}
+
+module.exports = { createUser, getUserByUnique, getUser }
